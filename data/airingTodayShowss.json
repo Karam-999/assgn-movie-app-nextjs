@@ -3,140 +3,135 @@
     "id": 22980,
     "type": "tv",
     "title": "Watch What Happens Live with Andy Cohen",
+    "poster": "/onSD9UXfJwrMXWhq7UY7hGF2S1h.jpg",
     "slug": "watch-what-happens-live-with-andy-cohen",
-    "rating": 5
+    "rating": 5,
+    "adult": false
   },
   {
     "id": 2224,
     "type": "tv",
     "title": "The Daily Show",
+    "poster": "/ixcfyK7it6FjRM36Te4OdblAq4X.jpg",
     "slug": "the-daily-show",
-    "rating": 6.398
+    "rating": 6.398,
+    "adult": false
   },
   {
     "id": 283123,
     "type": "tv",
     "title": "Esref's Dream",
+    "poster": "/jwrN5QA07dm8sKuUFInP2MRLPfb.jpg",
     "slug": "esref's-dream",
-    "rating": 7.174
+    "rating": 7.174,
+    "adult": false
   },
   {
     "id": 44006,
     "type": "tv",
     "title": "Chicago Fire",
+    "poster": "/r915sk2JpthZSjHEgZKifWxgo6L.jpg",
     "slug": "chicago-fire",
-    "rating": 8.404
-  },
-  {
-    "id": 273160,
-    "type": "tv",
-    "title": "The Beauty",
-    "slug": "the-beauty",
-    "rating": 5.953
+    "rating": 8.404,
+    "adult": false
   },
   {
     "id": 58841,
     "type": "tv",
     "title": "Chicago P.D.",
+    "poster": "/bez40PgT36RUu4gstD2A6GSM0tP.jpg",
     "slug": "chicago-p.d.",
-    "rating": 8.416
+    "rating": 8.416,
+    "adult": false
+  },
+  {
+    "id": 273160,
+    "type": "tv",
+    "title": "The Beauty",
+    "poster": "/tZTG2PPAukzksPkiQV9c4suIQXk.jpg",
+    "slug": "the-beauty",
+    "rating": 5.953,
+    "adult": false
   },
   {
     "id": 63770,
     "type": "tv",
     "title": "The Late Show with Stephen Colbert",
+    "poster": "/9jkThAGYj2yp8jsS6Nriy5mzKFT.jpg",
     "slug": "the-late-show-with-stephen-colbert",
-    "rating": 6.2
-  },
-  {
-    "id": 62650,
-    "type": "tv",
-    "title": "Chicago Med",
-    "slug": "chicago-med",
-    "rating": 8.283
+    "rating": 6.2,
+    "adult": false
   },
   {
     "id": 61818,
     "type": "tv",
     "title": "Late Night with Seth Meyers",
+    "poster": "/jm95V8XjfvqmEhw0MN09wbg9Mi3.jpg",
     "slug": "late-night-with-seth-meyers",
-    "rating": 5.283
+    "rating": 5.283,
+    "adult": false
   },
   {
     "id": 40663,
     "type": "tv",
     "title": "AIBOU: Tokyo Detective Duo",
+    "poster": "/8u8rCCeuBufMQ1VlGX0lruhDaPR.jpg",
     "slug": "aibou:-tokyo-detective-duo",
-    "rating": 7.6
+    "rating": 7.6,
+    "adult": false
   },
   {
-    "id": 302463,
+    "id": 62650,
     "type": "tv",
-    "title": "Dinastía Casillas",
-    "slug": "dinastia-casillas",
-    "rating": 8.263
+    "title": "Chicago Med",
+    "poster": "/9eym662FRJJb9wdgCiDKPDciZzf.jpg",
+    "slug": "chicago-med",
+    "rating": 8.283,
+    "adult": false
   },
   {
     "id": 307423,
     "type": "tv",
     "title": "Doménica Montero",
+    "poster": "/A02M5F5DcQ3glHrvBUSGnzTlvW1.jpg",
     "slug": "domenica-montero",
-    "rating": 8.224
+    "rating": 8.224,
+    "adult": false
+  },
+  {
+    "id": 302463,
+    "type": "tv",
+    "title": "Dinastía Casillas",
+    "poster": "/5xFzmTTC4ITaFkiwzohTK1UUNX3.jpg",
+    "slug": "dinastia-casillas",
+    "rating": 8.263,
+    "adult": false
   },
   {
     "id": 74561,
     "type": "tv",
     "title": "Who's the Murderer",
+    "poster": "/bBtd3p4DZmVEuv8L9SelQ0MVE2B.jpg",
     "slug": "who's-the-murderer",
-    "rating": 8.4
-  },
-  {
-    "id": 80240,
-    "type": "tv",
-    "title": "The Queen of Flow",
-    "slug": "the-queen-of-flow",
-    "rating": 7.983
+    "rating": 8.4,
+    "adult": false
   },
   {
     "id": 14750,
     "type": "tv",
     "title": "Na Wspólnej",
+    "poster": "/uksRhdaOn64bO5d33d7rcTbrhJI.jpg",
     "slug": "na-wspolnej",
-    "rating": 4.1
+    "rating": 4.1,
+    "adult": false
   },
   {
-    "id": 309328,
+    "id": 80240,
     "type": "tv",
-    "title": "Underground",
-    "slug": "underground",
-    "rating": 9
-  },
-  {
-    "id": 65270,
-    "type": "tv",
-    "title": "Radio Star",
-    "slug": "radio-star",
-    "rating": 5.8
-  },
-  {
-    "id": 1489,
-    "type": "tv",
-    "title": "Jimmy Kimmel Live!",
-    "slug": "jimmy-kimmel-live!",
-    "rating": 5.5
-  },
-  {
-    "id": 2912,
-    "type": "tv",
-    "title": "Jeopardy!",
-    "slug": "jeopardy!",
-    "rating": 6.838
-  },
-  {
-    "id": 271548,
-    "type": "tv",
-    "title": "6 of Us",
-    "slug": "6-of-us",
-    "rating": 5.5
+    "title": "The Queen of Flow",
+    "poster": "/fuVuDYrs8sxvEolnYr0wCSvtyTi.jpg",
+    "slug": "the-queen-of-flow",
+    "rating": 7.983,
+    "adult": false
   }
 ]

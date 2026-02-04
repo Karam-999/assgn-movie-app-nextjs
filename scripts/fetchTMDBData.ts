@@ -13,22 +13,46 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-async function fetchTMDB(endpoint: string) {
-  const url = `${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US`;
-  const res = await fetch(url);
+// Utility function to add delay between requests
 
-  if (!res.ok) {
-    const errorBody = await res.text();
-    throw new Error(
-      `TMDB fetch failed: ${res.status} ${res.statusText} - ${errorBody}`,
-    );
+
+async function fetchTMDB(endpoint: string) {
+  
+      const url = `${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US`;
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        const errorBody = await res.text();
+        throw new Error(
+          `TMDB fetch failed: ${res.status} ${res.statusText} - ${errorBody}`,
+        );
+      }
+      return res.json();
+    
   }
-  return res.json();
-}
+
+type Movie = {
+  id: number;
+  name: string;
+  title: string;
+  slug: string;
+  poster: string;
+  rating: number;
+  adult: boolean;
+  overview: string;
+  backdrop: string;
+  releaseDate: string;
+  type: 'movie' | 'tv';
+  poster_path: string;
+  vote_average: number;
+  first_air_date: string;
+  backdrop_path: string;
+  release_date: string;
+};
 
 async function getMovies() {
   const data = await fetchTMDB('/movie/popular');
-  return data.results.slice(0, 40).map((movie: any) => ({
+  return data.results.slice(0, 40).map((movie: Movie) => ({
     id: movie.id,
     type: 'movie',
     title: movie.title,
@@ -44,7 +68,7 @@ async function getMovies() {
 
 async function getShows() {
   const data = await fetchTMDB('/tv/popular');
-  return data.results.slice(0, 40).map((show: any) => ({
+  return data.results.slice(0, 40).map((show: Movie) => ({
     id: show.id,
     type: 'tv',
     title: show.name,
@@ -57,26 +81,42 @@ async function getShows() {
     adult: show.adult,
   }));
 }
+
+type SwiperItems = {
+  id: number;
+  type: 'movie' | 'tv';
+  title: string;
+  name: string;
+  slug: string;
+  poster: string;
+  poster_path: string;
+  rating: number;
+  vote_average: number;
+  adult: boolean;
+};
 async function airingTodaySwiperShows() {
   const data = await fetchTMDB('/tv/airing_today');
-  return data.results.slice(0, 5).map((show: any) => ({
+  return data.results.slice(0, 15).map((show: SwiperItems) => ({
     id: show.id,
     type: 'tv',
     title: show.name,
-    slug: slugify(show.name, { lower: true }),// Generate slug from show name
+    poster: show.poster_path,
+    slug: slugify(show.name, { lower: true }), // Generate slug from show name
     rating: show.vote_average,
+    adult: show.adult,
   }));
 }
 
 async function nowPlayingSwiperMovies() {
   const data = await fetchTMDB('/movie/now_playing');
-  return data.results.slice(0, 5).map((movie: any) => ({
+  return data.results.slice(0, 15).map((movie: SwiperItems) => ({
     id: movie.id,
     type: 'movie',
     title: movie.title,
     slug: slugify(movie.title, { lower: true }),
     poster: movie.poster_path,
     rating: movie.vote_average,
+    adult: movie.adult,
   }));
 }
 

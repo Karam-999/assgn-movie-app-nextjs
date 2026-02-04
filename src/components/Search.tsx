@@ -1,38 +1,58 @@
-const Search = () => {
+'use client';
+
+type SearchProps = {
+  query: string;
+  onQueryChange: (value: string) => void;
+  type: 'movie' | 'tv';
+  onTypeChange: (type: 'movie' | 'tv') => void;
+};
+
+const Search = ({ query, onQueryChange, type, onTypeChange }: SearchProps) => {
   return (
     <section className='p-[60px] mb-10'>
       <div className='max-w-[1200px] w-full mx-auto px-5 flex justify-center items-center flex-col'>
-        <h2 className='mb-5 text-center uppercase'>Search Movies</h2>
-        <div id='alert'></div>
-        <form action='/search-results' className='w-full max-w-[600px]'>
-          {/* Movies and shows radio box */}
-          <div className='[&_label]:mr-4'>
+        <h2 className='mb-5 text-center uppercase'>
+          Search {type === 'movie' ? 'Movies' : 'TV Shows'}
+        </h2>
+
+        <div className='w-full max-w-[600px]'>
+          {/* Radio buttons */}
+          <div className='[&_label]:mr-4 mb-2'>
             <input
               type='radio'
               id='movie'
-              name='type'
-              value='movie'
-              defaultChecked
+              checked={type === 'movie'}
+              onChange={() => onTypeChange('movie')}
             />
             <label htmlFor='movie'>Movies</label>
-            <input type='radio' id='tv' name='type' value='tv' />
+
+            <input
+              type='radio'
+              id='tv'
+              checked={type === 'tv'}
+              onChange={() => onTypeChange('tv')}
+              className='ml-4'
+            />
             <label htmlFor='tv'>TV Shows</label>
           </div>
-          <div className='flex justify-between items-center mt-2.5'>
+
+          {/* Search input */}
+          <div className='flex gap-2'>
             <input
               type='text'
-              name='search-term'
-              id='search-term'
               placeholder='Enter search term'
-              className='flex-6 w-full h-12.5 p-2.5 mr-2.5 border border-white rounded bg-transparent text-white placeholder:text-white focus:outline-none'
+              value={query}
+              onChange={(e) => onQueryChange(e.target.value)}
+              className='flex-1 h-12 p-2.5 border border-white rounded bg-transparent text-white placeholder:text-white focus:outline-none'
             />
+
             <button
-              className='flex-1 block w-full p-2.5 rounded h-[50px] cursor-pointer bg-[#d80000] text-black hover:bg-transparent hover:text-white transition-all duration-300'
-              type='submit'>
-              <i className='fas fa-search'></i>
+              type='button'
+              className='h-12 px-5 rounded bg-primary-red text-black hover:bg-transparent hover:text-white transition-all duration-300'>
+              <i className='fas fa-search' />
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </section>
   );
