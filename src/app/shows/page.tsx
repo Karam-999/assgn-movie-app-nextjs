@@ -1,15 +1,12 @@
-import PopularMovies from '@/components/PopularMovies';
+import PopularShows from '@/components/PopularShows';
 import Search from '@/components/Search';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 const ShowsPage = () => {
   return (
     <>
-      <Header />
-          <Search />
-          {/* make changes here */}
-      <PopularMovies />
-      <Footer />
+
+      <Search />
+      {/* make changes here */}
+      <PopularShows />
     </>
   );
 };
