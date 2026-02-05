@@ -120,5 +120,5 @@ npm start
 ---
 
 ## Contact Me:
-📧 **Gmail:** connect.with.karam25@gmial.com
+📧 **Gmail:** connect.with.karam25@gmail.com
 
