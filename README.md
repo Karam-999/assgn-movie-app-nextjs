@@ -7,7 +7,7 @@ A clean, modern content directory site built with Next.js 14+ App Router and Tai
 ## 📊 Dataset
 
 - **Source:** [TMDB (The Movie Database) API](https://www.themoviedb.org/documentation/api)
-- **Content:** 40+ Popular Movies, 40+ Popular TV Shows, Now Playing Movies, Airing Today Shows
+- **Content:** 20+ Popular Movies, 20+ Popular TV Shows, Now Playing Movies, Airing Today Shows
 - **Data Fields:** Title, slug, poster, backdrop, rating, release date, overview
 
 ### How the data was generated
@@ -112,9 +112,13 @@ npm start
 
 1. **Genre Filtering** - create genres `/movies/genre/[genre]` pages
 2. **Advanced Search** - Add filters for year, rating range, and multiple genres
-3. **Pagination** - Add pagination to movies and shows pages
+3. **Pagination** - implenment pagination to movies and shows pages
 4. **Image Optimization** - Blur placeholders and better lazy loading
 5. **Detail Page** - Make detail page more content rich
 6. **UI/UX Enhancement** - Impovement of overall ui/ux
 
-Built with ❤️ using Next.js, Tailwind CSS, and TMDB data
+---
+
+## Contact Me:
+📧 **Gmail:** connect.with.karam25@gmial.com
+
