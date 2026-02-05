@@ -1,57 +1,89 @@
 'use client';
+import { FaSearch, FaTimes, FaSortAmountDown } from 'react-icons/fa';
+import { SortOption, SearchProps } from '@/types';
 
-type SearchProps = {
-  query: string;
-  onQueryChange: (value: string) => void;
-  type: 'movie' | 'tv';
-  onTypeChange: (type: 'movie' | 'tv') => void;
-};
-
-const Search = ({ query, onQueryChange, type, onTypeChange }: SearchProps) => {
+const Search = ({
+  query,
+  onQueryChange,
+  type,
+  sortBy,
+  onSortChange,
+  totalResults,
+}: SearchProps) => {
   return (
-    <section className='p-[60px] mb-10'>
-      <div className='max-w-[1200px] w-full mx-auto px-5 flex justify-center items-center flex-col'>
-        <h2 className='mb-5 text-center uppercase'>
-          Search {type === 'movie' ? 'Movies' : 'TV Shows'}
-        </h2>
+    <section className='px-4 py-12'>
+      <div className='mx-auto max-w-5xl'>
+        <div className='mb-8 text-center'>
+          <h1 className='mb-2 text-3xl font-bold text-white md:text-4xl'>
+            Discover {type === 'movie' ? 'Movies' : 'TV Shows'}
+          </h1>
+          <p className='text-gray-400'>
+            Search and filter through our collection
+          </p>
+        </div>
 
-        <div className='w-full max-w-[600px]'>
-          {/* Radio buttons */}
-          <div className='[&_label]:mr-4 mb-2'>
-            <input
-              type='radio'
-              id='movie'
-              checked={type === 'movie'}
-              onChange={() => onTypeChange('movie')}
-            />
-            <label htmlFor='movie'>Movies</label>
-
-            <input
-              type='radio'
-              id='tv'
-              checked={type === 'tv'}
-              onChange={() => onTypeChange('tv')}
-              className='ml-4'
-            />
-            <label htmlFor='tv'>TV Shows</label>
-          </div>
-
-          {/* Search input */}
-          <div className='flex gap-2'>
+        <div className='mx-auto mb-6 flex max-w-3xl flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center'>
+          <div className='relative flex-1'>
+            <FaSearch className='absolute top-1/2 left-4 z-10 -translate-y-1/2 text-gray-400' />
             <input
               type='text'
-              placeholder='Enter search term'
+              placeholder={`Search ${type === 'movie' ? 'movies' : 'TV shows'}...`}
               value={query}
               onChange={(e) => onQueryChange(e.target.value)}
-              className='flex-1 h-12 p-2.5 border border-white rounded bg-transparent text-white placeholder:text-white focus:outline-none'
+              className='h-11 w-full rounded-full border border-gray-700 bg-gray-800/50 pr-12 pl-12 text-sm text-white backdrop-blur-sm transition-all duration-300 placeholder:text-gray-500 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none sm:h-12 sm:text-base'
             />
-
-            <button
-              type='button'
-              className='h-12 px-5 rounded bg-primary-red text-black hover:bg-transparent hover:text-white transition-all duration-300'>
-              <i className='fas fa-search' />
-            </button>
+            {query && (
+              <button
+                onClick={() => onQueryChange('')}
+                className='absolute top-1/2 right-4 -translate-y-1/2 text-gray-400 transition-colors hover:text-white'>
+                <FaTimes />
+              </button>
+            )}
           </div>
+
+          <div className='flex h-11 items-center justify-center gap-2 rounded-full border border-gray-700 bg-gray-800/50 px-4 backdrop-blur-sm sm:h-12 sm:justify-start'>
+            <FaSortAmountDown className='text-sm text-amber-400' />
+            <select
+              value={sortBy}
+              onChange={(e) => onSortChange(e.target.value as SortOption)}
+              className='cursor-pointer appearance-none rounded bg-transparent px-2 py-2 pr-4 text-sm text-white focus:outline-none'>
+              <option value='rating-desc' className='bg-gray-800'>
+                Highest Rated
+              </option>
+              <option value='rating-asc' className='bg-gray-800'>
+                Lowest Rated
+              </option>
+              <option value='date-desc' className='bg-gray-800'>
+                Newest First
+              </option>
+              <option value='date-asc' className='bg-gray-800'>
+                Oldest First
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div className='text-center'>
+          <p className='text-sm text-gray-400'>
+            {totalResults === 0 ? (
+              <span className='text-red-400'>No results found</span>
+            ) : (
+              <>
+                Showing{' '}
+                <span className='font-semibold text-amber-400'>
+                  {totalResults}
+                </span>{' '}
+                {type === 'movie' ? 'movie' : 'show'}
+                {totalResults !== 1 ? 's' : ''}
+                {query && (
+                  <>
+                    {' '}
+                    for &quot;<span className='text-white'>{query}</span>&quot;
+                  </>
+                )}
+              </>
+            )}
+          </p>
         </div>
       </div>
     </section>

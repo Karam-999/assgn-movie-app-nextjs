@@ -2,22 +2,22 @@ import movies from '../../data/movies.json';
 import shows from '../../data/shows.json';
 import airingTodayshows from '../../data/airingTodayShowss.json';
 import nowPlayingMovies from '../../data/nowPlayingmoviess.json';
+import { MediaDataTypes } from '@/types';
 
-interface MediaItem {
-  adult: boolean;
-  slug: string;
-  [key: string]: unknown;
-}
+export const getMovies = (): MediaDataTypes[] =>
+  (movies as MediaDataTypes[]).filter((movie) => !movie.adult);
 
-export const getMovies = () => (movies as MediaItem[]).filter((movie) => !movie.adult);
-export const getnowPlayingMovies = () =>
-  (nowPlayingMovies as MediaItem[]).filter((movie) => !movie.adult);
-export const getShows = () => (shows as MediaItem[]).filter((show) => !show.adult);
-export const getnowPlayingShows = () =>
-  (airingTodayshows as MediaItem[]).filter((show) => !show.adult);
+export const getnowPlayingMovies = (): MediaDataTypes[] =>
+  (nowPlayingMovies as MediaDataTypes[]).filter((movie) => !movie.adult);
 
-export const getMovieBySlug = (slug: string) =>
-  (movies as MediaItem[]).find((m) => m.slug === slug);
+export const getShows = (): MediaDataTypes[] =>
+  (shows as MediaDataTypes[]).filter((show) => !show.adult);
 
-export const getShowBySlug = (slug: string) =>
-  (shows as MediaItem[]).find((s) => s.slug === slug);
+export const getnowPlayingShows = (): MediaDataTypes[] =>
+  (airingTodayshows as MediaDataTypes[]).filter((show) => !show.adult);
+
+export const getMovieBySlug = (slug: string): MediaDataTypes | undefined =>
+  (movies as MediaDataTypes[]).find((m) => m.slug === slug);
+
+export const getShowBySlug = (slug: string): MediaDataTypes | undefined =>
+  (shows as MediaDataTypes[]).find((s) => s.slug === slug);

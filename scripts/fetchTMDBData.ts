@@ -9,27 +9,22 @@ const API_KEY = process.env.TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 if (!API_KEY) {
-  console.error('Error: TMDB_API_KEY is not set in .env.local');
   process.exit(1);
 }
 
-// Utility function to add delay between requests
-
 
 async function fetchTMDB(endpoint: string) {
-  
-      const url = `${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US`;
-      const res = await fetch(url);
+  const url = `${BASE_URL}${endpoint}?api_key=${API_KEY}&language=en-US`;
+  const res = await fetch(url);
 
-      if (!res.ok) {
-        const errorBody = await res.text();
-        throw new Error(
-          `TMDB fetch failed: ${res.status} ${res.statusText} - ${errorBody}`,
-        );
-      }
-      return res.json();
-    
+  if (!res.ok) {
+    const errorBody = await res.text();
+    throw new Error(
+      `TMDB fetch failed: ${res.status} ${res.statusText} - ${errorBody}`,
+    );
   }
+  return res.json();
+}
 
 type Movie = {
   id: number;
@@ -56,7 +51,7 @@ async function getMovies() {
     id: movie.id,
     type: 'movie',
     title: movie.title,
-    slug: slugify(movie.title, { lower: true }),
+    slug: slugify(movie.title, { lower: true, strict: true }),
     overview: movie.overview,
     poster: movie.poster_path,
     backdrop: movie.backdrop_path,
@@ -72,7 +67,7 @@ async function getShows() {
     id: show.id,
     type: 'tv',
     title: show.name,
-    slug: slugify(show.name, { lower: true }),
+    slug: slugify(show.name, { lower: true, strict: true }),
     overview: show.overview,
     poster: show.poster_path,
     backdrop: show.backdrop_path,
@@ -101,7 +96,7 @@ async function airingTodaySwiperShows() {
     type: 'tv',
     title: show.name,
     poster: show.poster_path,
-    slug: slugify(show.name, { lower: true }), // Generate slug from show name
+    slug: slugify(show.name, { lower: true, strict: true }),
     rating: show.vote_average,
     adult: show.adult,
   }));
@@ -113,7 +108,7 @@ async function nowPlayingSwiperMovies() {
     id: movie.id,
     type: 'movie',
     title: movie.title,
-    slug: slugify(movie.title, { lower: true }),
+    slug: slugify(movie.title, { lower: true, strict: true }),
     poster: movie.poster_path,
     rating: movie.vote_average,
     adult: movie.adult,

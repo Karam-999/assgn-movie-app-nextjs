@@ -20,11 +20,11 @@ interface Show {
 const AiringToday = () => {
   const shows = getnowPlayingShows() as unknown as Show[];
   return (
-    <section className='py-10 px-5 mt-2 bg-[#020d18] bg-hero2'>
-      <h2 className='my-5 text-center uppercase text-white text-2xl font-bold tracking-wider'>
+    <section className='bg-hero2 mt-2 bg-[#020d18] px-5 py-10'>
+      <h2 className='my-5 text-center text-2xl font-bold tracking-wider text-white uppercase'>
         Airing Today
       </h2>
-      <div className='max-w-[1200px] mx-auto'>
+      <div className='mx-auto max-w-[1200px]'>
         <Swiper
           modules={[Autoplay, Navigation, Pagination]}
           spaceBetween={20}
@@ -47,25 +47,25 @@ const AiringToday = () => {
             },
           }}
           className='now-playing-swiper'>
-          {shows.map((show) => (
+          {shows.map((show, index) => (
             <SwiperSlide key={show.id}>
               <div className='flex flex-col items-center'>
-                <div className='relative w-full aspect-[2/3] rounded-lg overflow-hidden'>
+                <div className='relative aspect-[2/3] w-full overflow-hidden rounded-lg'>
                   <Image
                     src={
                       show.poster
-                        ? `https://image.tmdb.org/t/p/w500${show.poster}`
+                        ? `https://image.tmdb.org/t/p/w342${show.poster}`
                         : noImage
                     }
                     alt={show.title}
-                    // height={100}
-                    // width={100}
                     fill
-                    className='object-cover hover:scale-105 transition-transform duration-300'
+                    sizes='(max-width: 640px) 100vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw'
+                    priority={index < 5}
+                    className='object-cover transition-transform duration-300 hover:scale-105'
                   />
                 </div>
-                <div className='flex items-center mt-3 text-white'>
-                  <span className='text-yellow-400 mr-1'>★</span>
+                <div className='mt-3 flex items-center text-white'>
+                  <span className='mr-1 text-yellow-400'>★</span>
                   <span>{show.rating.toFixed(1)}</span>
                 </div>
               </div>
