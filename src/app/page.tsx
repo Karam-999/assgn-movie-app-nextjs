@@ -19,7 +19,7 @@ const HomePage = () => {
             </span>
           </h1>
           <p className='mx-auto mb-8 max-w-2xl text-gray-300 md:text-xl'>
-            ltimate directory for exploring popular movies and trending TV
+            Ultimate directory for exploring popular movies and trending TV
             shows. Powered by TMDB data, featuring ratings, release dates, and
             detailed information for every title.
           </p>
